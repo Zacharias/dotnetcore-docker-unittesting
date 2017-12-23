@@ -25,3 +25,8 @@ I think that having the test projects underfoot, and built into the app structur
 
 It's important to run the tests in the SDK image, since it feels like copying things into the "server" image is implicitly saying a change/build is good enough to be served up, and the SDK has way more dotnet goodness (like dotnet test) anwyays.
 
+
+
+### Exfiltrating the test results and acting on them. 
+
+docker run -it --entrypoint /bin/bash aspnetapp:latest
