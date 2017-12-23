@@ -1,2 +1,8 @@
 
 \.vscode/
+
+api/bin/
+
+api/obj/
+
+tests/obj/
