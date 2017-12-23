@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using api.Services;
 
 namespace api
 {
@@ -24,7 +25,7 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IMyCoolService, MyCoolSevice>();
+            services.AddTransient<IMyCoolService, MyCoolService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

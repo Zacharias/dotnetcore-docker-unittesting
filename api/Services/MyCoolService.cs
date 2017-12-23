@@ -1,12 +1,11 @@
 using System;
 
 
-namespace api{
+namespace api.Services {
 
-public class MyCoolSevice : IMyCoolService {
+public class MyCoolService : IMyCoolService {
 
-
-    public MyCoolSevice(){
+    public MyCoolService(){
         //constructor things
     }
 
