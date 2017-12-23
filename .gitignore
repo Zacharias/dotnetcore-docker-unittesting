@@ -6,3 +6,5 @@ api/bin/
 api/obj/
 
 tests/obj/
+
+tests/bin/
