@@ -9,11 +9,18 @@ namespace api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly IMyCoolService _coolservice;
+
+        public ValuesController(IMyCoolService m){
+            _coolservice = m;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var f = _coolservice.GiveCoolString();
+            return new string[] { "value1", "value2", f };
         }
 
         // GET api/values/5
