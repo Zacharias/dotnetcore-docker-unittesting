@@ -15,15 +15,16 @@ I added a reference to the api project from the test project, keeping the paths 
 
 I wrote a unit test that confirms what the service should return.
 
-Note: I didn't have to mock out anything external for my service since it's fakey/madeup. This'll be different in real life for you.
+_Note: I didn't have to mock out anything external for my service since it's fakey/madeup. This'll be different in real life for you, and me likely._
+
 
 ### Dockerization (tag: dockerization --> tag: unit-testing)
 
 I started with the Microsoft two-step build and deploy/service Docker example that's commonly found around dotnet core 2 + Docker.
 
-I think that having the test projects underfoot, and built into the app structure breaks with convention a little too hard, so I worked on laying in the tests into an appropiate place in the SDK image. 
+There's some caching strategies that the [default Dockerfile](https://docs.docker.com/engine/examples/dotnetcore/) uses to minimize load time by doing a `dotnet restore` on the single csproj file in the solution in order to prevent having nuget do a restore on every run. This is a *laudable* goal, but I ran into a problem when I had multiple csprojs with annoying relative references to them being copied/flattened in the SDK/build container. There's room for improvement here, for sure.
 
-It's important to run the tests in the SDK image, since it feels like copying things into the "server" image is implicitly saying a change/build is good enough to be served up, and the SDK has way more dotnet goodness (like dotnet test) anwyays.
+There is a `dotnet xunit` command that is supposedly more performant than `dotnet test` in some/most/this? scenario. Since the SDK base image didn't have it, adding the correct tooling seemed out of scope for my "get it to work"/1.0 effort.
 
 
 ### Exfiltrating the test results and acting on them. (tag: unit-testing -> HEAD)
